@@ -1,0 +1,14 @@
+#exercise-text {
+    background-color: rgb(214, 157, 82);
+    font-size: 16px;
+    margin: 8px;
+    /* width: 480px; */
+    width: min-content;
+}
+
+#main-container {
+    background-color:antiquewhite;
+    width: auto;
+    margin: 0px;
+    padding: 0px;
+}
