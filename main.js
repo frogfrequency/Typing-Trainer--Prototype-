@@ -9,8 +9,7 @@ let validKeysRegex = /^\w|\W|ä|ö|ü|Ä|Ö|Ü| |`$/;
 
 
 let exerciseText = textCollection.texts[0];
-exerciseText = exerciseText.replace("’", "'");
-exerciseText = exerciseText.replace("’", "'");
+exerciseText = exerciseText.replaceAll("’", "'");
 exerciseText = exerciseText.replace("π", "pi");
 
 
@@ -35,9 +34,9 @@ function processKeyStroke(event) {
         testAlive = true;
         startTest();
     }
-    if (stroke == "Backspace") {
+    if (stroke == "Backspace" && testAlive) {
         processBackspace();
-    } else if (stroke.length < 2 && 0 < stroke.length && validKeysRegex.test(stroke)) {
+    } else if (stroke.length < 2 && 0 < stroke.length && validKeysRegex.test(stroke) && testAlive) {
         if (futureText.innerText.charAt(0) == stroke && incorrectText.innerText.length < 1) {
             processCorrectKeyStroke(stroke);
         } else {
