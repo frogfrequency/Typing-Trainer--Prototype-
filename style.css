@@ -1,14 +1,51 @@
-#exercise-text {
-    background-color: rgb(214, 157, 82);
-    font-size: 16px;
-    margin: 8px;
-    /* width: 480px; */
-    width: min-content;
+body {
+    background-color: rgb(51, 145, 101); 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 #main-container {
-    background-color:antiquewhite;
-    width: auto;
+    /* background-color:antiquewhite; */
+    /* width: auto; */
     margin: 0px;
     padding: 0px;
+}
+
+.text-container {
+    margin: auto;
+    padding: 12px;
+    /* background-color: rgb(215, 169, 131); */
+    width: max-content;
+    max-width: 640px;
+    /* min-width: 400px; */
+    font-size: 0; /* someone pleace explain to me why this is necessary to remove gaps betwenn the children...*/
+    border: solid black;
+}
+
+.text {
+    background-color: rgb(63, 181, 126);
+    font-size: 18px;
+    width: 480px;
+    white-space: break-spaces;
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+    width: max-content;
+}
+
+#correct-text {
+    /* color: rgb(0, 2, 62); */
+    background-color: rgb(51, 145, 101);
+    /* background-color: rgb(59, 168, 117); */
+}
+
+#incorrect-text {
+    background-color: red;
+    color: yellow;
+}
+
+#start-button {
+    width: max-content;
+    margin: auto;
+    padding: 4px;
+    margin-bottom: 8px;
 }

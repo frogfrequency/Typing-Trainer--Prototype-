@@ -7,15 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>number trainer</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="statsfield-style.css">
 </head>
 
 <body>
     <div id="main-container">
         <h1>number trainer</h1>
-        <div id="exercise-text">hello</div>
+        <div id="start-button" onclick="startTest()">hit enter to start!</div>
+        <div class="text-container">
+            <p id="correct-text" class="text"><p id="incorrect-text" class="text"></p><p id="future-text" class="text"> future</p></p>
+        </div>
+        <div id="statsfield">
+            <div>time elapsed:&nbsp;</div>
+            <div id="timefield"></div>
+            <div>cpm: &nbsp;</div>
+            <div id="cpmfield"></div>
+            <!-- <div>backspace-counter: &nbsp;</div> -->
+        </div>
+        <br><br>
         <a href="/">back</a>
     </div>
-    <script src="main.js"></script>
+    <script type="module" src="main.js"></script>
 </body>
 
 </html>
