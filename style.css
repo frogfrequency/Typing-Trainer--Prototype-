@@ -43,9 +43,11 @@ body {
     color: yellow;
 }
 
-#start-button {
+.button {
     width: max-content;
     margin: auto;
     padding: 4px;
     margin-bottom: 8px;
+    margin-top: 8px;
 }
+

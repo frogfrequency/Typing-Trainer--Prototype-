@@ -3,14 +3,16 @@ import textCollection from './textRessources.json' assert {type: 'json'};
 // instead the textmanipulations are made on the "live" html objects to maximize responsiveness, maybe this is unnecessary and a mistake
 
 
-document.addEventListener('keydown', (event) => {processKeyStroke(event)});
+document.addEventListener('keydown', (event) => { processKeyStroke(event) });
 
 let validKeysRegex = /^\w|\W|ä|ö|ü|Ä|Ö|Ü| |`$/;
 
 
 let exerciseText = textCollection.texts[0];
 exerciseText = exerciseText.replaceAll("’", "'");
-exerciseText = exerciseText.replace("π", "pi");
+exerciseText = exerciseText.replaceAll("π", "pi");
+exerciseText = exerciseText.replaceAll("≈", "=");
+
 
 
 let correctText = document.getElementById("correct-text");
@@ -26,14 +28,19 @@ let testAlive = false;
 
 function processKeyStroke(event) {
     let stroke = event.key;
-    if (event.keyCode == 32 && event.target == document.body) {
+
+    if (event.keyCode == 32 && event.target == document.body) { // prevent spacebar from scrolling down the page
         event.preventDefault();
     }
-    if (stroke == "Enter" && !testAlive) {
-        console.log("starting the test")
-        testAlive = true;
-        startTest();
+
+    if (stroke == "Enter") {
+        if (testAlive) {
+            endTest();
+        } else {
+            startTest();
+        }
     }
+
     if (stroke == "Backspace" && testAlive) {
         processBackspace();
     } else if (stroke.length < 2 && 0 < stroke.length && validKeysRegex.test(stroke) && testAlive) {
@@ -73,11 +80,27 @@ function processCorrectKeyStroke(stroke) {
 let startDate = Date.now();
 let elapsedElement = document.getElementById("timefield");
 let cpmField = document.getElementById("cpmfield");
-
+let continuousStatsUpdateInterval;
+let startButton = document.getElementById("start-button");
+let endButton = document.getElementById("end-button");
 
 function startTest() {
-    let myInterval = setInterval(() => updateStats(), 1000);
+    continuousStatsUpdateInterval = setInterval(() => updateStats(), 1000);
     startDate = Date.now();
+    startButton.style.display = "none";
+    endButton.style.display = "block";
+    futureText.innerText = exerciseText;
+    correctText.innerText = "";
+    incorrectText.innerText = "";
+    testAlive = true;
+
+}
+
+function endTest() {
+    clearInterval(continuousStatsUpdateInterval);
+    endButton.style.display = "none";
+    startButton.style.display = "block";
+    testAlive = false;
 }
 
 
@@ -85,7 +108,7 @@ function updateStats() {
     let elapsedTime = Date.now() - startDate;
     updateTime(elapsedTime);
     let cpm = evaluateCPM(elapsedTime);
-    cpmField.innerText = `${cpm} ≈ ${parseInt(cpm/5)} wpm`;
+    cpmField.innerText = `${cpm} ≈ ${parseInt(cpm / 5)} wpm`;
 }
 
 function updateTime(ms) {
