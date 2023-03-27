@@ -9,6 +9,14 @@ let validKeysRegex = /^\w|\W|ä|ö|ü|Ä|Ö|Ü| |`$/;
 
 
 let exerciseText = textCollection.texts[0];
+
+function giveCleanedText(text) {
+    
+}
+
+
+let myText = giveCleanedText("hello π");
+
 exerciseText = exerciseText.replaceAll("’", "'");
 exerciseText = exerciseText.replaceAll("π", "pi");
 exerciseText = exerciseText.replaceAll("≈", "=");

@@ -3,6 +3,16 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+#header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#text-input {
+    height: 20px;
+}
+
 #main-container {
     /* background-color:antiquewhite; */
     /* width: auto; */
