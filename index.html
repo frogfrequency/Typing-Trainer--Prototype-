@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
- <h1>hello</h1>
- <a href="/numberTrainer.html">numbertrainer</a>
 
- <h2> bye bye </h2>
-  
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>number trainer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="statsfield-style.css">
+</head>
+
+<body>
+    <div id="main-container">
+        <h1>number trainer</h1>
+        <div id="start-button" class="button" onclick="startTest()">hit Enter to start!</div>
+        <div style="display: none;" id="end-button" class="button" onclick="endTest()">hit Enter to end!</div>
+        <div class="text-container">
+            <p id="correct-text" class="text"><p id="incorrect-text" class="text"></p><p id="future-text" class="text"> future</p></p>
+        </div>
+        <div id="statsfield">
+            <div>time elapsed:&nbsp;</div>
+            <div id="timefield"></div>
+            <div>cpm: &nbsp;</div>
+            <div id="cpmfield"></div>
+            <!-- <div>backspace-counter: &nbsp;</div> -->
+        </div>
+        <br><br>
+        <a href="/">back</a>
+    </div>
+    <script type="module" src="main.js"></script>
 </body>
+
 </html>
