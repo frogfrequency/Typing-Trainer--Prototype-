@@ -11,15 +11,29 @@ let validKeysRegex = /^\w|\W|ä|ö|ü|Ä|Ö|Ü| |`$/;
 let exerciseText = textCollection.texts[0];
 
 function giveCleanedText(text) {
-    
+    let cleanedText = text.replaceAll("’", "'");
+    cleanedText = cleanedText.replaceAll("π", "pi");
+    cleanedText = cleanedText.replaceAll("≈", "=");
+    return cleanedText;
+}
+
+let inputElement = document.getElementById('text-input');
+
+let inputButton = document.getElementById('useThisInputButton').addEventListener('click', setText);
+
+
+function setText() {
+    // inputElement.value;
+    endTest();
+    exerciseText = giveCleanedText(inputElement.value);
+    futureText.innerText = exerciseText;
+    correctText.innerText = "";
+    incorrectText.innerText = "";
 }
 
 
 let myText = giveCleanedText("hello π");
 
-exerciseText = exerciseText.replaceAll("’", "'");
-exerciseText = exerciseText.replaceAll("π", "pi");
-exerciseText = exerciseText.replaceAll("≈", "=");
 
 
 
