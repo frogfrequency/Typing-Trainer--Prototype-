@@ -14,6 +14,11 @@ function giveCleanedText(text) {
     let cleanedText = text.replaceAll("’", "'");
     cleanedText = cleanedText.replaceAll("π", "pi");
     cleanedText = cleanedText.replaceAll("≈", "=");
+    cleanedText = cleanedText.replaceAll("^", "");
+    cleanedText = cleanedText.replaceAll("`", "");
+    cleanedText = cleanedText.replaceAll("–", "-");
+    cleanedText = cleanedText.replaceAll("ß", "ss");
+
     return cleanedText;
 }
 
@@ -32,7 +37,6 @@ function setText() {
 }
 
 
-let myText = giveCleanedText("hello π");
 
 
 
@@ -40,7 +44,7 @@ let myText = giveCleanedText("hello π");
 let correctText = document.getElementById("correct-text");
 let incorrectText = document.getElementById("incorrect-text");
 let futureText = document.getElementById("future-text");
-futureText.innerText = exerciseText;
+futureText.innerText = giveCleanedText(exerciseText);
 
 let testAlive = false;
 
@@ -111,7 +115,7 @@ function startTest() {
     startDate = Date.now();
     startButton.style.display = "none";
     endButton.style.display = "block";
-    futureText.innerText = exerciseText;
+    futureText.innerText = giveCleanedText(exerciseText);
     correctText.innerText = "";
     incorrectText.innerText = "";
     testAlive = true;
