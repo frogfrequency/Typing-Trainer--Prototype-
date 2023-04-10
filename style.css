@@ -60,5 +60,31 @@ body {
     padding: 4px;
     margin-bottom: 8px;
     margin-top: 8px;
+    background-color: rgb(61, 174, 121);
+    border-radius: 4px;
+    font-family: inherit;
 }
 
+.button:hover {
+    cursor: pointer;
+}
+
+.start-end-button {
+    display: block;
+    margin-bottom: 16px;
+}
+
+/* .start-end-hint {
+    width: max-content;
+    margin: auto;
+    padding: 4px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    background-color: rgb(61, 174, 121);
+    background-color: rgb(0,255,89);
+    border-radius: 4px;
+    font-family: inherit;
+}
+.start-end-hint:hover {
+    cursor: pointer;
+} */

@@ -1,10 +1,13 @@
 #statsfield {
-    left: 40%;
+    right: 16px;
     margin: 16px;
     padding: 8px;
+    flex-direction: column;
+    width: 200px;
     display: flex;
     justify-content: center;
     background-color: rgb(0, 255, 89);
+    border-radius: 4px;
     position: fixed;
     bottom: 10px;
     z-index: 1000;
@@ -13,4 +16,8 @@
 #timefield {
     /* background-color: orange; */
     margin-right: 16px;
+}
+
+.stats-row {
+    display: flex;
 }

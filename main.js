@@ -8,7 +8,7 @@ document.addEventListener('keydown', (event) => { processKeyStroke(event) });
 let validKeysRegex = /^\w|\W|ä|ö|ü|Ä|Ö|Ü| |`$/;
 
 
-let exerciseText = textCollection.texts[0];
+let exerciseText = textCollection.maxTegmark;
 
 function giveCleanedText(text) {
     let cleanedText = text.replaceAll("’", "'");
@@ -17,20 +17,32 @@ function giveCleanedText(text) {
     cleanedText = cleanedText.replaceAll("^", "");
     cleanedText = cleanedText.replaceAll("`", "");
     cleanedText = cleanedText.replaceAll("–", "-");
+    cleanedText = cleanedText.replaceAll("—", "-");
     cleanedText = cleanedText.replaceAll("ß", "ss");
 
     return cleanedText;
 }
 
-let inputElement = document.getElementById('text-input');
+let customTextInput = document.getElementById('text-input');
+let selectedInput = document.getElementById('text-select');
 
-let inputButton = document.getElementById('useThisInputButton').addEventListener('click', setText);
+let customInputButton = document.getElementById('useCustomInputButton').addEventListener('click', customText);
+let selectInputButton = document.getElementById('useSelectedInputButton').addEventListener('click', selectText);
+
+function customText() {
+    setText(customTextInput.value);
+}
+
+function selectText() {
+    setText(textCollection[selectedInput.value]);
+}
 
 
-function setText() {
+
+function setText(text) {
     // inputElement.value;
     endTest();
-    exerciseText = giveCleanedText(inputElement.value);
+    exerciseText = giveCleanedText(text);
     futureText.innerText = exerciseText;
     correctText.innerText = "";
     incorrectText.innerText = "";
@@ -48,7 +60,7 @@ futureText.innerText = giveCleanedText(exerciseText);
 
 let testAlive = false;
 
-
+// let enterPressedbefore = false;
 
 
 
@@ -59,17 +71,24 @@ function processKeyStroke(event) {
         event.preventDefault();
     }
 
-    if (stroke == "Enter") {
-        if (testAlive) {
-            endTest();
-        } else {
-            startTest();
-        }
-    }
+    // if (stroke == "Enter") {
+    //     if (!enterPressedbefore) {
+    //         enterPressedbefore = true;
+    //     } else if (testAlive) {
+    //         endTest();
+    //         enterPressedbefore = false;
+    //     } else {
+    //         startTest();
+    //         console.log("testlive")
+    //         enterPressedbefore = false;
+    //     }
+    // } else {
+    //     enterPressedbefore = false;
+    // }
 
     if (stroke == "Backspace" && testAlive) {
         processBackspace();
-    } else if (stroke.length < 2 && 0 < stroke.length && validKeysRegex.test(stroke) && testAlive) {
+    } else if (stroke.length == 1 && validKeysRegex.test(stroke) && testAlive) {
         if (futureText.innerText.charAt(0) == stroke && incorrectText.innerText.length < 1) {
             processCorrectKeyStroke(stroke);
         } else {
@@ -81,7 +100,7 @@ function processKeyStroke(event) {
 
 
 function processBackspace() {
-
+    corrections++;
     if (0 < incorrectText.innerText.length) {
         incorrectText.innerText = incorrectText.innerText.slice(0, -1);
     } else if (0 < correctText.innerText.length) {
@@ -106,11 +125,18 @@ function processCorrectKeyStroke(stroke) {
 let startDate = Date.now();
 let elapsedElement = document.getElementById("timefield");
 let cpmField = document.getElementById("cpmfield");
+let correctionsField = document.getElementById("correctionsfield");
 let continuousStatsUpdateInterval;
+
 let startButton = document.getElementById("start-button");
 let endButton = document.getElementById("end-button");
+startButton.addEventListener('click', startTest);
+endButton.addEventListener('click', endTest);
+
+let corrections = 0;
 
 function startTest() {
+    corrections = 0;
     continuousStatsUpdateInterval = setInterval(() => updateStats(), 1000);
     startDate = Date.now();
     startButton.style.display = "none";
@@ -119,7 +145,6 @@ function startTest() {
     correctText.innerText = "";
     incorrectText.innerText = "";
     testAlive = true;
-
 }
 
 function endTest() {
@@ -135,6 +160,7 @@ function updateStats() {
     updateTime(elapsedTime);
     let cpm = evaluateCPM(elapsedTime);
     cpmField.innerText = `${cpm} ≈ ${parseInt(cpm / 5)} wpm`;
+    correctionsField.innerText = correctText.innerText.length > 0 ? (corrections*5 / correctText.innerText.length).toFixed(2) : "-";
 }
 
 function updateTime(ms) {

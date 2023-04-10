@@ -15,32 +15,50 @@
         <div id="header">
             <h2>typing trainer</h2>
             <div>
-                
+
+                <label for="text-select">chose text</label>
+                <select name="choose text" id="text-select">
+                    <option value="bakterien">Bakterien</option>
+                    <option value="maxTegmark">life 3.0</option>
+                    <option value="numbers4567">numbers</option>
+                </select>
+
+                <button id="useSelectedInputButton" class="button">use selected input</button>
+
             </div>
-            <label for="text-select">chose text</label>
-            <select name="choose text" id="text-select"></select>
             <div>
                 <input id="text-input" placeholder="your text.." type="text" value="">
-                <button id="useThisInputButton" class="button">use this input</button>
+                <button id="useCustomInputButton" class="button">use custom input</button>
             </div>
         </div>
 
-
-        <div id="start-button" class="button">hit Enter to start!</div>
-        <div style="display: none;" id="end-button" class="button" onclick="endTest()">hit Enter to end!</div>
+        <div>
+            <button id="start-button" class="button start-end-button">START</button>
+            <button id="end-button" class="button start-end-button" style="display: none;">END</button>
+        </div>
         <div class="text-container">
             <p id="correct-text" class="text"><p id="incorrect-text" class="text"></p><p id="future-text" class="text"> future</p></p>
         </div>
         <div id="statsfield">
-            <div>time elapsed:&nbsp;</div>
-            <div id="timefield"></div>
-            <div>cpm: &nbsp;</div>
-            <div id="cpmfield"></div>
-            <!-- <div>backspace-counter: &nbsp;</div> -->
+            <div class="stats-row">
+                <div>time elapsed:&nbsp;</div>
+                <div id="timefield"></div>
+            </div>
+            <div class="stats-row">
+                <div>cpm: &nbsp;</div>
+                <div id="cpmfield"></div>
+            </div>
+            <div class="stats-row">
+                <div>corrections/word:&nbsp;</div>
+                <div id="correctionsfield"></div>
+            </div>
         </div>
-        <br><br>
+        <!-- <div>backspace-counter: &nbsp;</div> -->
+    </div>
+    <br><br>
     </div>
     <script type="module" src="main.js"></script>
 </body>
 <!-- test -->
+
 </html>
