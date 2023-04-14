@@ -11,7 +11,6 @@ let validKeysRegex = /^\w|\W|ä|ö|ü|Ä|Ö|Ü| |`$/;
 let exerciseText = textCollection.maxTegmark;
 
 function giveCleanedText(text) {
-    console.log(text);
     let cleanedText = text.replaceAll("’", "'");
     cleanedText = cleanedText.replaceAll("π", "pi");
     cleanedText = cleanedText.replaceAll("≈", "=");
