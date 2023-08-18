@@ -19,6 +19,7 @@ function giveCleanedText(text) {
     cleanedText = cleanedText.replaceAll("–", "-");
     cleanedText = cleanedText.replaceAll("—", "-");
     cleanedText = cleanedText.replaceAll("ß", "ss");
+    cleanedText = cleanedText.replaceAll("", "???");
 
     return cleanedText;
 }
