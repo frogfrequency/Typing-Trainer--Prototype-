@@ -3,6 +3,9 @@ import textCollection from './textRessources.json' assert {type: 'json'};
 // instead the textmanipulations are made on the "live" html objects to maximize responsiveness, maybe this is unnecessary and a mistake
 
 
+// IDEA::: auto-detect incorrectly written words and create a practice-file from them only containing those words
+
+
 document.addEventListener('keydown', (event) => { processKeyStroke(event) });
 
 let validKeysRegex = /^\w|\W|ä|ö|ü|Ä|Ö|Ü| |`$/;
@@ -11,6 +14,18 @@ let validKeysRegex = /^\w|\W|ä|ö|ü|Ä|Ö|Ü| |`$/;
 let exerciseText = textCollection.maxTegmark;
 
 function giveCleanedText(text) {
+
+    let replacementArr = [
+        ["²", "2"],
+        ["³", "3"],
+        ["μ", "micro-"],
+        ["‘", "'"],
+        ["“", "\""],
+        ["”", "\""],
+        ["…", "..."],
+        ["~", "about "]
+    ]
+
     let cleanedText = text.replaceAll("’", "'");
     cleanedText = cleanedText.replaceAll("π", "pi");
     cleanedText = cleanedText.replaceAll("≈", "=");
@@ -21,6 +36,17 @@ function giveCleanedText(text) {
     cleanedText = cleanedText.replaceAll("ß", "ss");
     cleanedText = cleanedText.replaceAll("", "");
     cleanedText = cleanedText.replaceAll("×", "x");
+    cleanedText = cleanedText.replaceAll("~", "");
+    cleanedText = cleanedText.replaceAll("®", "");
+    cleanedText = cleanedText.replaceAll("“", "\"");
+    
+    
+    for (let i = 0; i < replacementArr.length; i++) {
+        const element = replacementArr[i];
+        cleanedText = cleanedText.replaceAll(element[0], element[1])
+    }
+    
+
 
 
     return cleanedText;
