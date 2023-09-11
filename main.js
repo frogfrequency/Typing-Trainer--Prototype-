@@ -5,6 +5,10 @@ import textCollection from './textRessources.json' assert {type: 'json'};
 
 // IDEA::: auto-detect incorrectly written words and create a practice-file from them only containing those words
 
+// IDEA::: add buttons to toggle special features like "tired-pinky-mode" which lowercases all characters
+// IDEA::: add button to activate special character practice-mode which replaces backspace with the special characters. or maybe place it randomly in text?
+// IDEA::: have a second stats-tracker that only shows stats for the last minute or so
+// IDEA::: have a stop button to pause/resume the test
 
 document.addEventListener('keydown', (event) => { processKeyStroke(event) });
 
@@ -21,9 +25,15 @@ function giveCleanedText(text) {
         ["μ", "micro-"],
         ["‘", "'"],
         ["“", "\""],
-        ["”", "\""],
+        ["”", "\""],    
         ["…", "..."],
-        ["~", "about "]
+        ["~", "about "],
+        ["-", "-"],
+        ["«", "\""],
+        ["»", "\""],
+        ["  ", " "],
+        ["−", "-"],
+        ["€", "Euro"]
     ]
 
     let cleanedText = text.replaceAll("’", "'");
@@ -44,6 +54,7 @@ function giveCleanedText(text) {
     for (let i = 0; i < replacementArr.length; i++) {
         const element = replacementArr[i];
         cleanedText = cleanedText.replaceAll(element[0], element[1])
+        // cleanedText = cleanedText.toLowerCase();
     }
     
 
