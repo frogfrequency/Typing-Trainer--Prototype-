@@ -1,4 +1,4 @@
-import textCollection from './textRessources.json' assert {type: 'json'};
+import textCollection from './textRessources.json' with {type: 'json'};
 // the texts are not saved in variables which are then represented in the "view" (MVC-Pattern)
 // instead the textmanipulations are made on the "live" html objects to maximize responsiveness, maybe this is unnecessary and a mistake
 
