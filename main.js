@@ -9,6 +9,7 @@ import textCollection from './textRessources.json' with {type: 'json'};
 // IDEA::: add button to activate special character practice-mode which replaces backspace with the special characters. or maybe place it randomly in text?
 // IDEA::: have a second stats-tracker that only shows stats for the last minute or so
 // IDEA::: have a stop button to pause/resume the test
+// IDEA::: count erroneously written words and have a dynamic list, that shows with which words one struggles most
 
 document.addEventListener('keydown', (event) => { processKeyStroke(event) });
 
