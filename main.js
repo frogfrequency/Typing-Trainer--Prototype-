@@ -129,6 +129,8 @@ function processKeyStroke(event) {
 
     if (stroke == "Backspace" && testAlive) {
         processBackspace();
+    } else if (stroke == "ç") {
+        processCorrectKeyStroke(futureText.innerText.charAt(0)); // this lets you "cheat" to circumvent characters not possible with your keyboard
     } else if (stroke.length == 1 && validKeysRegex.test(stroke) && testAlive) {
         if (futureText.innerText.charAt(0) == stroke && incorrectText.innerText.length < 1) {
             processCorrectKeyStroke(stroke);
