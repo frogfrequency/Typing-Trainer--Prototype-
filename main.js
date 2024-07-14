@@ -1,4 +1,6 @@
 import textCollection from './textRessources.json' with {type: 'json'};
+import { englishWords } from './textJS.js';
+
 // the texts are not saved in variables which are then represented in the "view" (MVC-Pattern)
 // instead the textmanipulations are made on the "live" html objects to maximize responsiveness, maybe this is unnecessary and a mistake
 
@@ -34,7 +36,8 @@ function giveCleanedText(text) {
         ["»", "\""],
         ["  ", " "],
         ["−", "-"],
-        ["€", "Euro"]
+        ["€", "Euro"],
+        ["\n", " "]
     ]
 
     let cleanedText = text.replaceAll("’", "'");
@@ -75,7 +78,14 @@ function customText() {
 }
 
 function selectText() {
-    setText(textCollection[selectedInput.value]);
+    let textName = selectedInput.value;
+    console.log(textName);
+    if (textName.substring(0, textName.length - 2) == "english") {
+        console.log("asdfasdf")
+        setText(englishWords[textName]);
+    } else {
+        setText(textCollection[selectedInput.value]);
+    }
 }
 
 
