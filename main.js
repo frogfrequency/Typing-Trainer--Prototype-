@@ -37,7 +37,9 @@ function giveCleanedText(text) {
         ["  ", " "],
         ["−", "-"],
         ["€", "Euro"],
-        ["\n", " "]
+        ["\n", " "],
+        ["ü", "ü"],
+        
     ]
 
     let cleanedText = text.replaceAll("’", "'");
