@@ -72,6 +72,8 @@ function giveCleanedText(text) {
 let customTextInput = document.getElementById('text-input');
 let selectedInput = document.getElementById('text-select');
 
+const lowercaseCheckbox = document.getElementById('lowercaseCheckbox');
+
 let customInputButton = document.getElementById('useCustomInputButton').addEventListener('click', customText);
 let selectInputButton = document.getElementById('useSelectedInputButton').addEventListener('click', selectText);
 
@@ -94,8 +96,12 @@ function selectText() {
 
 function setText(text) {
     // inputElement.value;
+    console.log(lowercaseCheckbox.checked ? "its checked" : "its not checked")
     endTest();
     exerciseText = giveCleanedText(text);
+    if (lowercaseCheckbox.checked){
+        exerciseText = exerciseText.toLowerCase()
+    }
     futureText.innerText = exerciseText;
     correctText.innerText = "";
     incorrectText.innerText = "";

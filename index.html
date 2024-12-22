@@ -32,18 +32,22 @@
                 </select>
 
                 <button id="useSelectedInputButton" class="button">use selected input</button>
-
+                
             </div>
             <div>
                 <input id="text-input" placeholder="your text.." type="text" value="">
                 <button id="useCustomInputButton" class="button">use custom input</button>
             </div>
         </div>
-
-        <div>
-            <button id="start-button" class="button start-end-button">START</button>
-            <button id="end-button" class="button start-end-button" style="display: none;">END</button>
+        <div id="subheader">
+            <label for="lowercaseCheckbox">convert input to lowercase?</label>
+            <input type="checkbox" id="lowercaseCheckbox">
+            <div>
+                <button id="start-button" class="button start-end-button">START</button>
+                <button id="end-button" class="button start-end-button" style="display: none;">END</button>
+            </div>
         </div>
+
         <div class="text-container">
             <p id="correct-text" class="text"><p id="incorrect-text" class="text"></p><p id="future-text" class="text"> future</p></p>
         </div>

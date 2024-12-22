@@ -9,6 +9,17 @@ body {
     align-items: center;
 }
 
+#subheader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lowercaseCheckbox {
+    margin-right: 2em;
+    margin-left: 1em;
+}
+
 #text-input {
     height: 20px;
     width: 80px;
