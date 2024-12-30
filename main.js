@@ -39,7 +39,7 @@ function giveCleanedText(text) {
         ["€", "Euro"],
         ["\n", " "],
         ["ü", "ü"],
-        
+        ["	", " "]
     ]
 
     let cleanedText = text.replaceAll("’", "'");
@@ -63,9 +63,6 @@ function giveCleanedText(text) {
         // cleanedText = cleanedText.toLowerCase();
     }
     
-
-
-
     return cleanedText;
 }
 
@@ -85,7 +82,6 @@ function selectText() {
     let textName = selectedInput.value;
     console.log(textName);
     if (textName.substring(0, textName.length - 2) == "english") {
-        console.log("asdfasdf")
         setText(englishWords[textName]);
     } else {
         setText(textCollection[selectedInput.value]);
