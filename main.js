@@ -144,7 +144,11 @@ function processKeyStroke(event) {
     // }
 
     if (stroke == "Backspace" && testAlive) {
-        processBackspace();
+        if (event.ctrlKey) {
+            processCtrlBackspace();
+        } else {
+            processBackspace();
+        }
     } else if (stroke == "ç") {
         processCorrectKeyStroke(futureText.innerText.charAt(0)); // this lets you "cheat" to circumvent characters not possible with your keyboard
     } else if (stroke.length == 1 && validKeysRegex.test(stroke) && testAlive) {
@@ -168,6 +172,23 @@ function processBackspace() {
     }
 
 
+}
+
+function processCtrlBackspace() {
+    corrections++;
+
+    const incorrect = incorrectText.innerText;
+    const lastIncorrectSpace = incorrect.lastIndexOf(" ");
+    if (lastIncorrectSpace >= 0) {
+        incorrectText.innerText = incorrect.slice(0, lastIncorrectSpace + 1);
+        return;
+    }
+
+    const correct = correctText.innerText;
+    const removeFrom = correct.lastIndexOf(" ") + 1;
+    futureText.innerText = correct.slice(removeFrom) + futureText.innerText;
+    correctText.innerText = correct.slice(0, removeFrom);
+    incorrectText.innerText = "";
 }
 
 function processCorrectKeyStroke(stroke) {
